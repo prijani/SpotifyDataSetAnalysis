@@ -1,12 +1,16 @@
 # Spotify Track Analysis and Popularity Prediction
 
-This project explores a dataset of over 110,000 Spotify tracks to identify the mathematical patterns that drive musical popularity. Using Python's statistical and machine learning libraries, the study analyzes audio features (such as danceability, energy, and valence) to predict hits and group tracks into distinct musical categories.
+This project explores a dataset of over 110,000 Spotify tracks to identify the mathematical patterns that drive musical popularity. Using Python's statistical and machine learning libraries, the study analyzes audio features (such as danceability, energy, and valence) to predict hits and group tracks into distinct musical categories and audio features and to determine the relationship with popularity based on catchiness.
 
 ## Dataset
 
 The data used in this project is the **Spotify Tracks Dataset** sourced from [Kaggle](https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset). It contains 114,000+ tracks with 21 columns of metadata and audio-engineered features provided by the Spotify Web API.
 
-## Repository Structure
+## Setup Instructions
+
+Download the dataset from Kaggle (linked above) or our cleaned version (cleaned_spotify.csv) found in the Preprocessing&Visual file. In the IDE of your choice, ensure you have done "pip install pandas numpy matplotlib seaborn scikit-learn statsmodels scipy". Afterwards, you can download and run the files. 
+
+## Repository Structure/Methodology 
 
 ### 1. Preprocessing&Visual.ipynb
 
@@ -40,6 +44,18 @@ This notebook includes **non-linear algorithms** and **multiclass predictions**.
 
 * **Acoustic Profiling (Classification):** Utilizes Random Forest Classifiers to predict whether a track is "Explicit" and correctly classify songs into their top 5 respective genres based purely on their instrumental and rhythmic features.
 
+### 4. CatchinessAnalysis.ipynb
+
+This notebook includes **Feature Engineering**.
+
+* **Principal Component Analysis (PCA):** An investigation into which audio features are statistically significant predictors of popularity. This includes checks for Multicollinearity (VIF) and interpretation of p-values.
+
+* **Random Forest Classification:** A robust learning model used to fit our data that allows us to find **Feature Importance**, which is a detailed ranking on which audio features are the strongest indicators of a track's popularity. 
+
+* **Custom Feature Engineering:** The development of a "Catchiness Score", a weighted composite metric derived from the narrowed audio features from **Feature Importance**. This section explores how engineered features can sometimes provide more insight than raw API data.
+
+* **Correlation Mapping:** A scatterplot looking at how our engineered catchiness score correlates with a track's popularity, testing our hypothesis that "catchier" traits lead to greater commercial success. 
+
 ## Methods and Tools Used
 
 * **Languages:** Python (Jupyter Notebook)
@@ -60,7 +76,7 @@ This notebook includes **non-linear algorithms** and **multiclass predictions**.
 
 * **Visualization:** Matplotlib, Seaborn, WordCloud
 
-## Key Findings
+## Key Findings/Results Summary
 
 ### Regression Results
 
@@ -70,15 +86,9 @@ While audio features like danceability and loudness are statistically significan
 
 Using a Median Split to ensure balanced classes, the initial Logistic Regression model achieved an accuracy of 57% and an ROC-AUC of 0.58. This indicates that while music popularity is chaotic, audio features provide a predictive advantage over random chance. Furthermore, logistic coefficients revealed that high instrumentalness and acousticness actively hurt a track's chances of becoming a mainstream hit.
 
-### Advanced Predictive Profiling
-
-The Random Forest classifiers successfully decoded distinct acoustic signatures within the data:
-
-* **Explicit Content:** The model identified explicit tracks with **81% accuracy** without performing any text analysis on the lyrics, utilizing features like speechiness and danceability.
-
-* **Genre Classification:** The algorithm successfully distinguished between the top 5 most common genres with **77% accuracy**, proving that genres like 'House' and 'Pagode' have highly rigid mathematical structures.
-
 ### Unsupervised Discovery
+
+### K-Means
 
 K-Means successfully identified three distinct profiles in modern music:
 
@@ -87,8 +97,19 @@ K-Means successfully identified three distinct profiles in modern music:
 2. **The High-Energy:** High energy with lower valence and acousticness.
 
 3. **The Feel-Good Hits:** High danceability and high valence.
+   
+### Advanced Predictive Profiling
 
-**Authors:** Priya Jani, Vanna Q, Cole Decker
+The Random Forest classifiers successfully decoded distinct acoustic signatures within the data:
+
+* **Explicit Content:** The model identified explicit tracks with **81% accuracy** without performing any text analysis on the lyrics, utilizing features like speechiness and danceability.
+
+* **Genre Classification:** The algorithm successfully distinguished between the top 5 most common genres with **77% accuracy**, proving that genres like 'House' and 'Pagode' have highly rigid mathematical structures.
+
+### Catchiness Score
+Catchiness score successfully demonstrated a correlation with popularity. The scatterplot was heavily right-leaning, which seems to imply that catchiness is a requirement for songs.
+
+**Authors:** Priya Jani, Vanna Quach, Cole Decker
 
 **Date:** April 2026
 
