@@ -42,13 +42,21 @@ This notebook includes **non-linear algorithms** and **multiclass predictions**.
 
 ## Methods and Tools Used
 
-* **Languages:** Python (Jupyter Notebook, Python Scripts)
+* **Languages:** Python (Jupyter Notebook)
 
 * **Data Manipulation:** Pandas, NumPy
 
-* **Statistical Modeling:** Statsmodels (OLS Regression)
+* **Statistical Modeling:** Statsmodels (OLS Regression, VIF calculation)
 
-* **Machine Learning:** Scikit-Learn (Logistic Regression, Random Forest Regressor/Classifier, K-Means Clustering, StandardScaler)
+* **Machine Learning:** Scikit-Learn
+
+  * **Regression:** Multiple Linear Regression, Random Forest Regressor
+
+  * **Classification:** Logistic Regression, Random Forest Classifier
+
+  * **Unsupervised:** K-Means Clustering, PCA
+
+  * **Utilities:** StandardScaler, 10-Fold Cross-Validation, Feature Importance Analysis
 
 * **Visualization:** Matplotlib, Seaborn, WordCloud
 
